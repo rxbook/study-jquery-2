@@ -1,0 +1,9 @@
+user:123@email:ffffg
+
+user:44@email:ffffg
+user:renxing@email:123456@qq.com
+user:@email:
+user:33@email:44
+user:33@email:44
+user:33@email:44
+user:33@email:44

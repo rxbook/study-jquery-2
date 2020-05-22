@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>ddd</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		 	div,span{
+			    width: 140px;
+			    height: 140px;
+			    margin: 20px;
+			    background: #9999CC;
+			    border: #000 1px solid;
+				float:left;
+			    font-size: 17px;
+			    font-family:Roman;
+			}
+			
+			div.mini{
+			    width: 30px;
+			    height: 30px;
+			    background: #CC66FF;
+			    border: #000 1px solid;
+			    font-size: 12px;
+			    font-family:Roman;
+			}
+			
+
+			div.visible{
+				display:none;
+			}
+	 </style>
+	 <!--引入jquery的js库-->
+	 <script type="text/javascript" src="../jquery-1.3.1.js"></script>
+    
+	</head>
+	 
+	<body>
+		<h1>XXXX</h1>
+		<h2>XXXXXXX</h2>
+		<h3>XXXXXXXXX</h3>
+		
+		 <input type="button" value="改变所有可见的div元素的背景色为 #0000FF"  id="b1"/>
+		 <input type="button" value="选取所有不可见的元素, 利用 jQuery 中的 show() 方法将它们显示出来, 并设置其背景色为 #0000FF"    id="b2"/>
+		 <input type="button" value=" 选取所有的文本隐藏域, 并打印它们的值"  id="b3"/>
+		
+		 
+		 <input type="hidden" value="hidden1"/>
+		 <input type="hidden" value="hidden2"/>
+		 <input type="hidden" value="hidden3"/>
+		 <input type="hidden" value="hidden4"/>
+		 
+	     <div id="one"  class="visible">
+	    	 div id为one  
+		 </div>
+		 
+		 <div id="two"    class="visible">
+		 	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		 </div>
+		 
+		 <div id="three"  class="one" >
+	    	XXXXXXXXX
+		 </div>
+		 
+		 
+		
+	</body>
+     
+	<script language="JavaScript">
+	
+	//改变所有可见的div元素的背景色为 #0000FF	
+	$('#b1').click(function(){		
+		$('div:visible').css("background","#0000ff");
+	})
+	
+	//选取所有不可见的元素, 利用show()方法将它们显示出来, 并设置其背景色
+	$('#b2').click(function(){
+		$(":hidden").css("background","#0000ff");
+		$(":hidden").show();		
+	})
+	
+	//**选取所有的文本隐藏域, 并打印它们的值
+	$('#b3').click(
+	function(){
+		$objs=$('input:hidden');		 
+		$.each($objs,function(){
+			alert($(this).val());
+		});		
+	}); //关于详细的分析，请见html案例
+	 
+	
+	//详细分析————————
+	/*
+	$('#b3').click(
+	function(){
+		$objs=$('input:hidden');
+		//alert($objs.length);
+		//$objs  是集合($objs[0],$objs[1],$objs[2],$objs[3])
+		//如果是传统的方法
+		//$objs(jquery)->dom对象
+		//var dom_objs=$objs[2];
+		//window.alert(dom_objs.value);
+		for(var i=0;i<$objs.length;i++){
+			//dom
+			//var dom_objs=$objs[i];
+			//window.alert(dom_objs.value);
+			//jquery方法直接取值??
+			//window.alert($objs[i].val());
+		}
+		
+		//jquery方法
+		$.each($objs,function(i,obj){
+			//相当于,每循环一次 1.i自增一次2. obj=$objs[i]
+			window.alert("dom "+obj.value);  
+			window.alert("jquery "+$(obj).val());
+			
+		});
+		
+		$.each($objs,function(){
+			//相当于这样理解,每循环一次  this=$objs[i]
+			window.alert("dom "+this.value);
+			window.alert("jquery "+ $(this).val());
+		});
+		
+	}
+	);*/
+	
+	</script>
+   
+</html>
+
+
+

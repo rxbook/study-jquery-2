@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>ddd</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		 	div{
+			   
+				
+			   
+			}
+			
+		 	ul{
+				width:800px;
+				height:50px;
+				list-style:none;
+				text-align:center;	
+			}
+			li{
+				border:1px solid blue;
+				float:left;	
+				margin-left:10px;
+				width:50px;
+				background:#CCC;
+			}
+			
+	 </style>
+	 <!--引入jquery的js库-->
+	 <script type="text/javascript" src="../jquery-1.3.1.js"></script>
+ 
+	</head>
+	<body>
+	
+   
+     
+     <div>
+		<input type="button" id="b1" value="添加重庆li到 ul的最后面（append）"/><br/>	
+        <input type="button" id="b11" value="添加重庆li到 ul的最后面（appendTo）"/><br/>	<br/>	
+        		
+		<input type="button" id="b2" value="添加成都li到ul的最前面（prepend）"/><br/>
+        <input type="button" id="b22" value="添加成都li到ul的最前面（prependTo）"/><br/><br/>	
+        
+		<input type="button" id="b3" onclick="test1()" value="添加重庆li到 ul的最后面(使用dom的传统方法)"/><br/><br/>
+        
+		<input type="button" id="b4" value="添加成都li到 li=北京 之后（after）"/><br/>	
+        <input type="button" id="b44" value="添加成都li到 li=北京 之后（insertAfter）"/><br/><br/>
+        	
+		<input type="button" id="b5" value="添加成都li到 li=吉林之前（before）"/><br/>
+        <input type="button" id="b55" value="添加成都li到 li=吉林之前（insertBefore）"/><br/>
+	</div>
+    
+    
+     <div>	
+     
+		<ul id="city">
+  	    	<li id="bj" name="beijing">北京</li>
+			<li id="sh" name="shanghai">上海</li>
+			<li id="jl" name="jilin">吉林</li>
+			<li id="my" name="mianyang">绵阳</li>
+  	    </ul>
+        
+	</div>
+    
+    <hr>
+    
+    	您喜欢的城市:
+		<ul id="citys">
+  	    	<li id="bj" name="beijing">北京</li>
+			<li id="sh" name="shanghai">上海</li>
+			<li id="tj" name="tianjin">天津</li>
+  	    </ul>		
+		您爱好的游戏：
+		<ul id="game">
+  	    	<li id="fk" name="fakong">反恐</li>
+			<li id="cq" name="chuangqi">传奇</li>
+  	    </ul>        
+     	<input type="button" id="bt1" value="bt1"/>
+	 	<input type="button" id="bt2" value="bt2"/>
+        
+      <hr>
+      
+      <p>Hello</p> 
+      how are(这不是p) 
+      <p>you?</p> 		
+	  <p name="test">Hello, <span>Person</span> <a href="#">and person</a></p> 
+      
+      <input type="button" value="删除所有p" id="p1"/>
+		<input type="button" value="所有p清空" id="p2"/>
+		<input type="button" value="删除上海这个li" id="p3"/>  
+        
+ 
+ 
+     
+	<script language="JavaScript">
+	
+	/*1.创建节点*/
+	/* 
+	//*****添加重庆li到 上海下
+	$("#b1").click(function(){
+		//jquery方法
+		//<li id='cq' name=''chongqing>重庆</li>
+		//有两种方法
+		//1.一步到位********
+	//	$myli=$("<li id='cq' name='chongqing'>重庆</li>");
+		//先使用内部插入
+		//$('#city').append($myli) :表示 在 $('#city')对象内部后面添加一个 $myli对象
+	//	$('#city').append($myli);
+		//1.end ....一步到位********
+		
+		
+		//2.逐步添加我们的dom对象
+		
+		$myli=$("<li></li>");//<===>$myli=$("<li/>");
+		$myli.text("重庆"); //=> <li>重庆</li>
+		$myli.attr("id","cq");//==><li id='cq'>重庆</li>
+		$myli.attr("name","chongqing");
+		//把$myli添加到上海
+		////$('#city').append($myli) :表示 在 $('#city')对象内部后面添加一个 $myli对象
+		//$('#city').append($myli);
+		//如果使用appendTo这应当这样使用
+		//$myli.appendTo($("#city")); :表示把$myli添加到  $("#city")对象的内部后面
+		$myli.appendTo($("#city"));
+
+	})*/
+	
+	//添加重庆li到 ul的最后面（ 使用append ）
+	$("#b1").click(function(){	
+		//方法一：直接把要插入的<li>append	 
+		//$myli=$("<li id='cq' name='chongqing'>重庆</li>");
+		//$('#city').append($myli);
+		
+		//方法二：逐步添加dom对象		
+		$myli=$("<li></li>");
+		$myli.text("重庆"); //=> <li>重庆</li>
+		$myli.attr("id","cq");//=> <li id='cq'>重庆</li>
+		$myli.attr("name","chongqing");//=> <li id='cq' name='chongqing'>重庆</li>
+		//然后，开始append
+		$('#city').append($myli);		
+	})
+	
+	//使用appendTo
+	$("#b11").click(function(){			
+		$myli=$("<li id='cq' name='chongqing'>重庆</li>");		
+		$myli.appendTo($("#city"));
+	})//结果 同上
+	
+	
+	//添加成都li到ul的最前面（prepend）
+	$("#b2").click(function(){
+		var $myli=$("<li id='cq' name='chongqing'>成都</li>");
+		$('#city').prepend($myli);
+	})	
+	//添加成都li到ul的最前面（prependTo）
+	$("#b22").click(function(){
+		var $myli=$("<li id='cq' name='chongqing'>成都</li>");
+		$myli.prependTo($('#city'));
+	})
+	
+	//添加重庆li到 ul的最后面(使用dom的传统方法)
+	function test1(){		
+		var myli=document.createElement("li");
+		myli.setAttribute("id","cq");
+		myli.setAttribute("name","chongqing");
+		myli.innerHTML="重庆";		
+		document.getElementById("city").appendChild(myli);		
+	}
+	
+	//添加成都li到 li=北京 之后（after）
+	$('#b4').click(function(){
+		$("#bj").after("<li id='cd' name='chengdu '>成都</li>");
+	})
+	//添加成都li到 li=北京 之后（insertAfter）
+	$('#b44').click(function(){
+		$("<li id='cd' name='chengdu '>成都</li>").insertAfter($('#bj'));
+	})
+	
+	
+	//添加成都li到 li=吉林之前（before）
+	$('#b5').click(function(){
+		$("#jl").before("<li id='cd' name='chengdu '>成都</li>");
+	})
+	//添加成都li到 li=吉林之前（insertBefore）
+	$('#b55').click(function(){
+		$("<li id='cd' name='chengdu '>成都</li>").insertBefore($('#jl'));
+	})
+	
+	
+	/****以上方法不但能将新创建的 DOM 元素插入到文档中, 也能对原有的 DOM 元素进行移动.***/
+	//****使用外部插入法 把“反恐”li移动“天津”li后
+	$('#bt1').click(function(){
+		$("#tj").after($('#fk'));
+	})	
+	//****使用内部插入法 把“反恐”li移动“天津”li后
+	$('#bt2').click(function(){
+		$('#citys').append($('#fk'));
+	})
+	
+	
+	
+	/*--------------------------------------------------------------------*/
+	
+	
+	/*2.删除节点 */	
+	 	 
+	//所有p标签的内容清空，保留<p></p>标签
+	$("#p2").click(function(){
+		$("p").empty();
+	})	
+	
+	//删除所有<p></p>标签及其之间的内容
+	$("#p1").click(function(){
+		$("p").remove();
+	})
+	
+	 //删除“上海”这个li
+	$("#p3").click(function(){
+		$("#sh").remove();
+	})
+	
+	
+    </script>
+   
+   <hr>
+   
+   <button id="fuzhi">复制节点clone</button><br>
+   <button id="fuzhi2">复制节点clone(true)</button><br> 
+   <span id="pid">[hello]  </span>
+ 
+ 	<script language="JavaScript">
+	 /*3.复制节点*/
+	 
+	 //#pid 的点击事件
+	 $("#pid").click(function(){
+	 	window.alert($(this).text());
+	 });
+	 
+	 //复制一份#pid,但是没有复制事件
+	 $("#fuzhi").click(function(){
+	 	$("#pid").clone().insertAfter($('#fuzhi'));
+	 });
+	 //复制一份#pid,同时复制它的点击事件
+	 $("#fuzhi2").click(function(){
+	 	$("#pid").clone(true).insertAfter($('#fuzhi2'));
+	 });
+	  
+	 
+    </script>
+   
+   
+   <hr>
+   
+   <button id="th1">替换replaceWith</button>
+   <button id="th2">替换replaceAll</button><br> 
+   
+   <p id="rep">Hello,cruel,World</p> 
+   
+   <script language="JavaScript">
+   /*4.替换节点*/ 
+	
+	//replaceWith
+	$("#th1").click(function(){
+	 	$("#rep").replaceWith("<a href='#'>sohu</a><br/>");
+	});
+	//replaceAll
+	$("#th2").click(function(){
+	 	$("<a href='#'>sohu</a>").replaceAll($("#rep"));
+	});
+	 
+	 
+    </script>
+   
+   
+
+
+</body>
+</html>
+
+
+

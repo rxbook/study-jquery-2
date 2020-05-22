@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>ddd</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		 	div,span{
+			    width: 140px;
+			    height: 140px;
+			    margin: 20px;
+			    background: #9999CC;
+			    border: #000 1px solid;
+				float:left;
+			    font-size: 17px;
+			    font-family:Roman;
+			}
+			
+			div.mini{
+			    width: 30px;
+			    height: 30px;
+			    background: #CC66FF;
+			    border: #000 1px solid;
+			    font-size: 12px;
+			    font-family:Roman;
+			}
+	 </style>
+	 <!--引入jquery的js库-->
+	 <script type="text/javascript" src="../jquery-1.3.1.js"></script>
+ 
+	</head>
+	<body>
+    
+    
+    	
+		<input type="button" value="查找所有子元素"  id="b2"/>
+        <input type="button" value="获取后面的同辈元素"  id="b3"/>
+        <input type="button" value="获取前面的同辈元素"  id="b4"/>
+        <input type="button" value="获取所有的同辈元素"  id="b5"/>
+       
+	
+	<div > 
+		ccccccc
+   </div>	
+		
+   <div class="one" style="height:100%"> div class="one"
+		 <div id="one"   >
+	    	div id="one"
+            	<div id="oneone">div id="oneone"</div>
+		 </div>
+		 	 
+		 <div id="two"  >
+	    	div id="two"
+		 </div>
+		 	 
+		 <div id="three" >
+	    	div id="three"
+		 </div>
+		 
+		  <div id="four" >
+	    	div id="four"
+		 </div>
+   </div>	
+   
+   
+   <div> 
+	    tttttttttt
+   </div>	
+   
+   <div> 
+	    aaaaaaa
+   </div>
+   
+   <div>bbbbbb</div>
+   
+   
+  
+        
+        
+   </body>
+   
+   
+	<script language="JavaScript">
+		
+	//**查找所有class为one的div的子元素
+	$("#b2").click(function(){
+	    //指定获取第2个子元素
+		alert($(".one").children().eq(1).text());
+		//获取所有子元素，用each遍历
+		$(".one").children().each(function(){
+			alert($(this).text());
+		})
+	})
+	
+	//***获取class为one的div后面的同辈元素	
+	$("#b3").click(function(){	
+		//获取.one后面紧邻的一个同辈元素 next()
+		alert($(".one").next().text());
+		//获取.one后面所有的同辈元素 nextAll()			
+		$(".one").nextAll().each(function(){
+			alert($(this).text());
+		})		
+	})
+	
+	//获取class为one的div前面的同辈元素	 	
+	$("#b4").click(function(){
+		//获取.one后面紧邻的一个同辈元素 prev()
+		alert($(".one").prev().text());
+		//获取.one后面所有的同辈元素 prevAll()			
+		$(".one").prevAll().each(function(){
+			alert($(this).text());
+		})		
+	}) 
+	
+	//**获取所有的同辈元素
+	$("#b5").click(function(){	
+		$(".one").siblings().each(function(){
+			alert($(this).text());
+		})	
+	}) 
+	
+	
+    </script>
+    
+    </html>
+
+
+

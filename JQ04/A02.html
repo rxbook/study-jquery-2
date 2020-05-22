@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" src="jquery-1.9.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+   $("#bt1").click(function(){
+   		$("p.uu2").hide('slow');	 // 操作 <p class="uu2">
+   });
+   
+   $("#bt2").click(function(){
+   		$("ul > li").hide('fast');//只操作 ul 里面的li	  
+   });
+   
+   $("#bt3").click(function(){
+   		$("#p1").css("color","green");
+		$("#p1").css("font-weight","bold"); 	//<p id="p1"> 更改颜色为green，更改为粗体	  
+   });
+   
+});
+</script>
+</head>
+<body>
+<p id="title"><b>交警穿3000元背心 带风扇可以降温10℃以上</b></p>
+<p class="content">
+	41分钟前- 近日,陕西省渭南交警再也不用担心站岗太热啦!有一爱心企业向渭南市公安局交警支队临渭大队国贸十字三中队捐赠了4件风冷降温服,价值3000元。;人民政协网...
+</p>
+<p class="uu2">pppppppppppppppppppppppp</p>
+<li class="uu2">lililililililililililililililililililililililililililili</li>
+<button id="bt1">按钮1</button>
+
+<br>---------------------------------------------------------------------<br>
+
+<ul>
+    <li>北京</li>
+    <li>上海</li>
+    <li>西安</li>
+</ul>
+<li>ul外面的选项</li>
+<button id="bt2">按钮2</button>
+
+<br>---------------------------------------------------------------------<br>
+
+<p id="p1">疯狂英语李阳出..家疯狂英语李阳出家</p>
+<button id="bt3">按钮3</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
